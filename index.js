@@ -33,6 +33,8 @@ async function run() {
     const database = client.db("productsDB");
     const productsCollection = database.collection("products");
 
+    const cartsCollection = client.db("CartsDB").collection("carts");
+
     app.get('/products' , async (req, res)=> {
         const cursor = productsCollection.find()
         const result = await cursor.toArray(cursor);
@@ -72,6 +74,20 @@ async function run() {
       const result = await productsCollection.updateOne(filter, updateProducts, option);
       res.send(result)
     })
+
+    // add cart server
+   
+    app.get('/carts' , async (req, res)=> {
+      const cursor = cartsCollection.find()
+      const result = await cursor.toArray(cursor);
+      res.send(result)
+  })
+
+    app.post('/carts' , async(req, res) => {
+      const cart = req.body;
+      const result = await cartsCollection.insertOne(cart);
+      res.send(result)
+    } )
 
 
     // Send a ping to confirm a successful connection

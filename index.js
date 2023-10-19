@@ -77,11 +77,7 @@ async function run() {
 
     // add cart server
 
-    app.get('/carts' , async (req, res)=> {
-      const cursor = cartsCollection.find()
-      const result = await cursor.toArray(cursor);
-      res.send(result)
-  })
+  
 
     app.post('/carts' , async (req, res) => {
       const user =req.body;

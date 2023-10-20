@@ -4,8 +4,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express()
 
 const port = process.env.PORT || 3000
-// bLrvQQV2Yj6WQhiA
-// redwanbrandshop
+
 
 app.use(cors())
 app.use(express.json())
